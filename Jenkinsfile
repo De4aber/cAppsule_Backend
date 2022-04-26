@@ -8,11 +8,6 @@ pipeline {
     stages {
 	
 	    stage('Building: API') {
-                when {
-                    anyOf {
-                        changeset "cAppsule"
-                    }
-                }
                     steps{
                         sh "echo '[API] Building...'"
                         sh "dotnet build cAppsule"
