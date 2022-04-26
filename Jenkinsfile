@@ -9,9 +9,10 @@ pipeline {
 	
 	    stage('Back-end tests') {
     		steps{
+		    sh "dotnet test"
     		    dir ("BackendAPI/Core.Test/BackendTests") {
     		        sh "dotnet add package coverlet.collector"
-                    sh "dotnet test --collect:'XPlat Code Coverage'"
+                    	sh "dotnet test --collect:'XPlat Code Coverage'"
     		    }
     		}
         }
