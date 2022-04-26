@@ -7,14 +7,21 @@ pipeline {
 
     stages {
 	
-	    stage('Back-end tests') {
-    		steps{
-		    sh "dotnet test"
-    		    dir ("BackendAPI/Core.Test/BackendTests") {
-    		        sh "dotnet add package coverlet.collector"
-                    	sh "dotnet test --collect:'XPlat Code Coverage'"
-    		    }
-    		}
-        }
+	    stage('Building: API') {
+                when {
+                    anyOf {
+                        changeset "cAppsule"
+                    }
+                }
+                    steps{
+                        sh "echo '[API] Building...'"
+                        sh "dotnet build cAppsule"
+                    }
+                    post {
+                    		success {
+                    		sh "echo 'API built successfully'"
+                    		}
+                    	}
+                }
     }
 }
