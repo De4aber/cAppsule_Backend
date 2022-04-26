@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cAppsule", "cAppsule\cAppsule.csproj", "{B49485C0-E7C2-4572-BEF6-B89E3D87E29A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B49485C0-E7C2-4572-BEF6-B89E3D87E29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49485C0-E7C2-4572-BEF6-B89E3D87E29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49485C0-E7C2-4572-BEF6-B89E3D87E29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49485C0-E7C2-4572-BEF6-B89E3D87E29A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
