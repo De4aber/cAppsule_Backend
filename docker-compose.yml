@@ -1,7 +1,9 @@
-﻿services:
+﻿version: "3.9"
+
+services:
   api:
     build:
-      context: "cAppsule"
-    container_name: "Backend-container"
+      context: ""
+    container_name: "backend-container"
     ports:
       - "8091:80"
