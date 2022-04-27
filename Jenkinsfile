@@ -18,6 +18,16 @@ pipeline {
                     		}
                     }
         }
+        stage("Reset containers"){
+                    steps{
+                        script{
+                            try{
+                                sh "docker-compose down"
+                            }
+                            finally {}
+                        }
+                    }
+                }
         stage("Deploy"){
                     steps{
                         sh "docker-compose up -d"
