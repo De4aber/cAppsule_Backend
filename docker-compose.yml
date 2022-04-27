@@ -1,17 +1,9 @@
 ﻿version: "3.9"
 
 services:
-  web:
-    build:
-      context: "FrontendHappy"
-    container_name: "Frontend-container"
-    ports:
-      - "8090:80"
-    depends_on:
-      - "api"
   api:
     build:
-      context: "BackendAPI"
+      context: "cAppsule"
     container_name: "Backend-container"
     ports:
       - "8091:80"
