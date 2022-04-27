@@ -12,13 +12,13 @@ namespace cAppsule.Controllers
         {
             _users.Add(new User
             {
-                Id = 0,
+                Id = "0",
                 Username = "john"
             });
 
             _users.Add(new User
             {
-                Id = 1,
+                Id = "1",
                 Username = "joe"
             });
         }
