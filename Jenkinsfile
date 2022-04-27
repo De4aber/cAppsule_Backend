@@ -16,7 +16,12 @@ pipeline {
                     		success {
                     		sh "echo 'API built successfully'"
                     		}
-                    	}
+                    }
+        }
+        stage("Deploy"){
+                    steps{
+                        sh "docker-compose up -d"
+                    }
                 }
     }
 }
