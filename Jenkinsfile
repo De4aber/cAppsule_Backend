@@ -8,30 +8,30 @@ pipeline {
     stages {
 	
 	    stage('Building: API') {
-                    steps{
-                        sh "echo '[API] Building...'"
-                        sh "dotnet build cAppsule.sln"
-                    }
-                    post {
-                    		success {
-                    		sh "echo 'API built successfully'"
-                    		}
-                    }
+            steps{
+                sh "echo '[API] Building...'"
+                sh "dotnet build cAppsule.sln"
+            }
+            post {
+                success {
+                    sh "echo 'API built successfully'"
+                }
+            }
         }
         stage("Reset containers"){
-                    steps{
-                        script{
-                            try{
-                                sh "docker-compose down"
-                            }
-                            finally {}
-                        }
+            steps{
+                script{
+                    try{
+                        sh "docker compose down"
                     }
+                    finally {}
                 }
+            }
+        }
         stage("Deploy"){
-                    steps{
-                        sh "docker-compose up -d"
-                    }
-                }
+            steps{
+                sh "docker compose up -d"
+            }
+        }
     }
 }
