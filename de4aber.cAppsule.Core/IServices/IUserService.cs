@@ -6,5 +6,7 @@ namespace de4aber.cAppsule.Core.IServices
     public interface IUserService
     {
         List<User> GetUsers();
+
+        User Create(User user);
     }
 }

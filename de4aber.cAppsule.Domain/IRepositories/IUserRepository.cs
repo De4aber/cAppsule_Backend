@@ -6,5 +6,7 @@ namespace de4aber.cAppsule.Domain.IRepositories
     public interface IUserRepository
     {
         public List<User> FindAll();
+        
+        public User Create(User user);
     }
 }

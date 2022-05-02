@@ -20,5 +20,10 @@ namespace de4aber.cAppsule.Domain.Service
         {
             return _userRepository.FindAll();
         }
+
+        public User Create(User user)
+        {
+            return _userRepository.Create(user);
+        }
     }
 }

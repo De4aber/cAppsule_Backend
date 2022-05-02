@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using cAppsule;
+using de4aber.cAppsule.DataAccess.Entities;
 using de4aber.cAppsule.Domain.IRepositories;
 
 namespace de4aber.cAppsule.DataAccess.Repositories
@@ -25,6 +26,24 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                     Id = u.Id.ToString(),
                     Username = u.Username
                 }).ToList();
+        }
+
+        public User Create(User user)
+        {
+            UserEntity userEntity = new UserEntity()
+            {
+                Username = user.Username
+            };
+            UserEntity createdUserEntity = _ctx.Users.Add(userEntity).Entity;
+
+            _ctx.SaveChanges();
+            User createdUser = new User()
+            {
+                Id = createdUserEntity.Id.ToString(),
+                Username = createdUserEntity.Username,
+            };
+
+            return createdUser;
         }
     }
 }

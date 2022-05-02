@@ -24,6 +24,12 @@ namespace cAppsule.Controllers
         {
             return _userService.GetUsers();
         }
-        
+
+        [HttpPost(nameof(CreateUser))]
+
+        public ActionResult<User> CreateUser(User user)
+        {
+            return _userService.Create(user);
+        }
     }
 }
