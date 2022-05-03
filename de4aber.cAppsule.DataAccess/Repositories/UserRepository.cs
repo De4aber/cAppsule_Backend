@@ -46,6 +46,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
          /// Before inserting into the database, it will confirm that the given username doesn't already exist within the database.
          /// </summary>
          /// <param name="user">the <c>User</c> object containing the user-data to be inserted</param>
+         /// <returns>The created <c>User</c> object, or throws an exception if already exists</returns>
          public User Create(User user)
         {
             if (findUser(user.Username).Username == "null") throw new Exception("User already exists");
