@@ -21,9 +21,24 @@ namespace de4aber.cAppsule.Domain.Service
             return _userRepository.FindAll();
         }
 
+        public User GetById(int id)
+        {
+            return _userRepository.ReadById(id);
+        }
+
         public User Create(User user)
         {
             return _userRepository.Create(user);
+        }
+
+        public bool DeleteById(int id)
+        {
+            return _userRepository.DeleteById(id);
+        }
+
+        public User UpdateUser(int id, User user)
+        {
+            return _userRepository.UpdateUser(id, user);
         }
     }
 }

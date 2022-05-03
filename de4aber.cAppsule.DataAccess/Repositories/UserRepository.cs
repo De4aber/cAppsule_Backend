@@ -28,22 +28,43 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                 }).ToList();
         }
 
+        public User ReadById(int id)
+        {
+            var userEntity = _ctx.Users.Find(id);
+            return userEntity?.ToUser() ?? throw new InvalidOperationException();
+        }
+
         public User Create(User user)
         {
-            UserEntity userEntity = new UserEntity()
+            UserEntity userEntity = new()
             {
                 Username = user.Username
             };
             UserEntity createdUserEntity = _ctx.Users.Add(userEntity).Entity;
 
             _ctx.SaveChanges();
-            User createdUser = new User()
-            {
-                Id = createdUserEntity.Id.ToString(),
-                Username = createdUserEntity.Username,
-            };
 
-            return createdUser;
+            return createdUserEntity.ToUser();
         }
+
+        public bool DeleteById(int id)
+        {
+            var toDelete = _ctx.Users.Find(id);
+            if (toDelete == null) return false;
+            _ctx.Users.Remove(toDelete);
+            _ctx.SaveChanges();
+            return true;
+
+        }
+
+        public User UpdateUser(int id, User user)
+        {
+            user.Id = id.ToString();
+            var updatedUser = _ctx.Users.Update(new UserEntity(user)).Entity;
+            _ctx.SaveChanges();
+            return updatedUser.ToUser();
+        }
+        
+        
     }
 }
