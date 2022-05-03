@@ -22,7 +22,7 @@ pipeline {
             steps{
                 script{
                     try{
-                        sh "docker compose down --remove-orphans"
+                        sh "docker compose down"
                     }
                     finally {}
                 }
@@ -30,6 +30,8 @@ pipeline {
         }
         stage("Deploy"){
             steps{
+            --always-recreate-deps 
+                sh "docker compose up -d --always-recreate-deps"
                 sh "docker compose up -d --build"
             }
         }
