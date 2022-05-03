@@ -15,6 +15,12 @@ namespace de4aber.cAppsule.Domain.IRepositories
         /// <returns>The created <c>User</c> object, or throws an exception if already exists</returns>
         public User Create(User user);
 
+        /// <summary>
+        /// Validates the information sent from the user based on the given input.
+        /// If the user-data is valid, a Login object will be sent back up the system, which then is used in the frontend
+        /// </summary>
+        /// <param name="user">User object containing everything that is needed for logging in</param>
+        /// <returns>Login object containing needed info about the user, and valid token</returns>
         Login Login(User user);
     }
 }
