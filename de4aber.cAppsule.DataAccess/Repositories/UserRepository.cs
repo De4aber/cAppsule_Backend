@@ -29,13 +29,24 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                 }).ToList();
         }
         
+        /// <summary>
+        /// Finds a given user within the database by a given <c>username</c>
+        /// </summary>
+        /// <param name="username">the username of the wanted user</param>
+        /// <returns><c>UserEntity</c> of either the found <c>User</c>, or a new <c>User</c> with it's name set to <c>"null"</c></returns>
         public UserEntity findUser(string username)
         {
             return _ctx.Users.FirstOrDefault(user => user.Username == username)
                    ?? new UserEntity{ Username = "null" };
         }
         
-        public User Create(User user)
+        
+         /// <summary>
+         /// Creates a new <c>User</c> entity and places it into the SQL-based database.
+         /// Before inserting into the database, it will confirm that the given username doesn't already exist within the database.
+         /// </summary>
+         /// <param name="user">the <c>User</c> object containing the user-data to be inserted</param>
+         public User Create(User user)
         {
             if (findUser(user.Username).Username == "null") throw new Exception("User already exists");
             
