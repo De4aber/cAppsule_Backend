@@ -30,7 +30,6 @@ pipeline {
         }
         stage("Deploy"){
             steps{
-            --always-recreate-deps 
                 sh "docker compose up -d --always-recreate-deps"
                 sh "docker compose up -d --build"
             }
