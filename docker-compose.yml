@@ -3,7 +3,7 @@
 services:
   api:
     build:
-      context: ""
+      context: .
     container_name: "backend-container"
     ports:
       - "8091:80"
