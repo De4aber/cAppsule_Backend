@@ -22,7 +22,7 @@ pipeline {
             steps{
                 script{
                     try{
-                        sh "docker compose down"
+                        sh "docker compose down --remove-orphans"
                     }
                     finally {}
                 }
