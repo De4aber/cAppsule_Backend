@@ -34,7 +34,7 @@ namespace de4aber.cAppsule.DataAccess
 
         private void AddMockDataUser()
         {
-            _ctx.Users.Add(new UserEntity() {Username = "Ove"});
+            _ctx.Users.Add(new UserEntity() {Username = "Ove", CapScore = 3});
         }
     }
 }

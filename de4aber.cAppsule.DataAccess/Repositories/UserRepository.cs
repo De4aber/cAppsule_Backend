@@ -21,11 +21,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
         public List<User> FindAll()
         {
             return _ctx.Users
-                .Select(u => new User()
-                {
-                    Id = u.Id.ToString(),
-                    Username = u.Username
-                }).ToList();
+                .Select(u => u.ToUser()).ToList();
         }
 
         public User ReadById(int id)
@@ -67,11 +63,10 @@ namespace de4aber.cAppsule.DataAccess.Repositories
 
         public List<User> SearchByUsername(string search)
         {
-            return _ctx.Users.Where(u => u.Username.ToLower().Contains(search.ToLower())).Select(u => new User()
-            {
-                Id = u.Id.ToString(),
-                Username = u.Username
-            }).ToList();
+            return _ctx.Users
+                .Where(u => u.Username.ToLower().Contains(search.ToLower()))
+                .Select(u => u.ToUser()
+            ).ToList();
         }
     }
 }

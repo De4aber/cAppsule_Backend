@@ -9,6 +9,7 @@ namespace de4aber.cAppsule.DataAccess.Entities
         {
             Id = int.Parse(user.Id);
             Username = user.Username;
+            CapScore = Int32.Parse(user.CapScore);
         }
 
         public UserEntity()
@@ -19,12 +20,15 @@ namespace de4aber.cAppsule.DataAccess.Entities
         public int Id { get; set; }
         public string Username { get; set; }
 
+        public int CapScore { get; set; }
+
         public User ToUser()
         {
             return new User()
             {
                 Id = Id.ToString(),
-                Username = Username
+                Username = Username,
+                CapScore = CapScore.ToString()
             };
         }
     }
