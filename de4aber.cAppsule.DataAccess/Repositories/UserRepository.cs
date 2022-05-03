@@ -42,7 +42,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
         
         public User Create(User user)
         {
-            if (findUser(user.Username).Username == "null") throw new Exception("User already exists");
+            if (findUser(user.Username).Username != "null") throw new Exception("User already exists");
             
             UserEntity userEntity = new UserEntity()
             {
@@ -64,7 +64,18 @@ namespace de4aber.cAppsule.DataAccess.Repositories
 
         public Login Login(User user)
         {
-            throw new NotImplementedException();
+            UserEntity foundUser = findUser(user.Username);
+            if (foundUser.Username == "null") throw new Exception("User not found in the database!");
+            if (foundUser.Password != user.Password)
+                throw new Exception("Username doesn't match with found password from database!");
+
+            Login login = new Login()
+            {
+                Id = foundUser.Id,
+                Username = foundUser.Username
+            };
+            
+            return login;
         }
     }
 }
