@@ -69,6 +69,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             if (foundUser.Password != user.Password)
                 throw new Exception("Username doesn't match with found password from database!");
 
+            //TODO: Add a token system
             Login login = new Login()
             {
                 Id = foundUser.Id,
