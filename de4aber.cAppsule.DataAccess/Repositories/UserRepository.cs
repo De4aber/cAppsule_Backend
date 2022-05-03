@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using cAppsule;
@@ -27,12 +28,22 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                     Username = u.Username
                 }).ToList();
         }
-
+        
+        public UserEntity findUser(string username)
+        {
+            return _ctx.Users.FirstOrDefault(user => user.Username == username)
+                   ?? new UserEntity{ Username = "null" };
+        }
+        
         public User Create(User user)
         {
+            if (findUser(user.Username).Username == "null") throw new Exception("User already exists");
+            
             UserEntity userEntity = new UserEntity()
             {
-                Username = user.Username
+                Username = user.Username,
+                Password = user.Password,
+                BirthDate =  user.BirthDate
             };
             UserEntity createdUserEntity = _ctx.Users.Add(userEntity).Entity;
 
