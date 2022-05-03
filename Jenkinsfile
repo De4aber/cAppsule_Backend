@@ -10,7 +10,7 @@ pipeline {
 	    stage('Building: API') {
             steps{
                 sh "echo '[API] Building...'"
-                sh "dotnet build --no-restore cAppsule.sln"
+                sh "dotnet build cAppsule.sln"
             }
             post {
                 success {
