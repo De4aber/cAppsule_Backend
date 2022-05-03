@@ -12,5 +12,7 @@ namespace de4aber.cAppsule.Core.IServices
         public bool DeleteById(int id);
 
         public User UpdateUser(int id, User user);
+
+        public List<User> SearchByUsername(string search);
     }
 }

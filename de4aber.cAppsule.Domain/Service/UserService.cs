@@ -40,5 +40,10 @@ namespace de4aber.cAppsule.Domain.Service
         {
             return _userRepository.UpdateUser(id, user);
         }
+
+        public List<User> SearchByUsername(string search)
+        {
+            return _userRepository.SearchByUsername(search);
+        }
     }
 }

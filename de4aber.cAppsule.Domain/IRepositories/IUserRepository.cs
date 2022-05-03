@@ -14,5 +14,6 @@ namespace de4aber.cAppsule.Domain.IRepositories
         public bool DeleteById(int id);
 
         public User UpdateUser(int id, User user);
+        List<User> SearchByUsername(string search);
     }
 }

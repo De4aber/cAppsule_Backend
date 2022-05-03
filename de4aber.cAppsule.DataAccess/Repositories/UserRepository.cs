@@ -64,7 +64,14 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             _ctx.SaveChanges();
             return updatedUser.ToUser();
         }
-        
-        
+
+        public List<User> SearchByUsername(string search)
+        {
+            return _ctx.Users.Where(u => u.Username.ToLower().Contains(search.ToLower())).Select(u => new User()
+            {
+                Id = u.Id.ToString(),
+                Username = u.Username
+            }).ToList();
+        }
     }
 }

@@ -49,5 +49,13 @@ namespace cAppsule.Controllers
         {
             return _userService.UpdateUser(id, user);
         }
+        
+        [HttpGet(nameof(SearchByUsername) +"/{username}")]
+        public ActionResult<List<User>> SearchByUsername(string username)
+        {
+            return _userService.SearchByUsername(username);
+        }
+        
+        
     }
 }
