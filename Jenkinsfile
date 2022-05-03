@@ -30,7 +30,8 @@ pipeline {
         }
         stage("Deploy"){
             steps{
-                sh "docker compose up -d --build --no-cache"
+                sh "docker compose up --force-recreate"
+                sh "docker compose up -d --build"
             }
         }
     }
