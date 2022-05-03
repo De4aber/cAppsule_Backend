@@ -10,7 +10,7 @@ pipeline {
 	    stage('Building: API') {
             steps{
                 sh "echo '[API] Building...'"
-                sh "dotnet build cAppsule.sln"
+                sh "dotnet build --no-restore cAppsule.sln"
             }
             post {
                 success {
@@ -30,7 +30,6 @@ pipeline {
         }
         stage("Deploy"){
             steps{
-                sh "docker compose up -d --always-recreate-deps"
                 sh "docker compose up -d --build"
             }
         }
