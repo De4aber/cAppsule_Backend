@@ -26,7 +26,6 @@ namespace cAppsule.Controllers
         }
 
         [HttpPost(nameof(CreateUser))]
-
         public ActionResult<User> CreateUser(User user)
         {
             return _userService.Create(user);

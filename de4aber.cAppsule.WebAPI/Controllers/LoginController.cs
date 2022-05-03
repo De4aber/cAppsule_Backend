@@ -20,9 +20,9 @@ namespace cAppsule.Controllers
         }
 
         [HttpPost]
-        public ActionResult<LoginEntity> login()
+        public ActionResult<Login> login([FromBody] User user)
         {
-            throw new NotImplementedException();
+            return _userService.Login(user);
         }
     }
 }

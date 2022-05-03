@@ -61,5 +61,10 @@ namespace de4aber.cAppsule.DataAccess.Repositories
 
             return createdUser;
         }
+
+        public Login Login(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

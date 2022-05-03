@@ -26,5 +26,10 @@ namespace de4aber.cAppsule.Domain.Service
             //TODO: move password check to service-level instead of repo. level for easier readability
             return _userRepository.Create(user);
         }
+
+        public Login Login(User user)
+        {
+            return _userRepository.Login(user);
+        }
     }
 }

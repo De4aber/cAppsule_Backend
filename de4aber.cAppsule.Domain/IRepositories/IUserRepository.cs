@@ -14,5 +14,7 @@ namespace de4aber.cAppsule.Domain.IRepositories
         /// <param name="user">the <c>User</c> object containing the user-data to be inserted</param>
         /// <returns>The created <c>User</c> object, or throws an exception if already exists</returns>
         public User Create(User user);
+
+        Login Login(User user);
     }
 }

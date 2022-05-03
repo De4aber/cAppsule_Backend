@@ -8,5 +8,6 @@ namespace de4aber.cAppsule.Core.IServices
         List<User> GetUsers();
 
         User Create(User user);
+        Login Login(User user);
     }
 }

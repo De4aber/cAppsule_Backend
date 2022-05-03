@@ -1,6 +1,6 @@
-﻿namespace de4aber.cAppsule.DataAccess.Entities
+﻿namespace cAppsule
 {
-    public class LoginEntity
+    public class Login
     {
         public int Id { get; set; }
         public string Username { get; set; }
