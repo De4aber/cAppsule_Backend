@@ -7,9 +7,9 @@ namespace de4aber.cAppsule.DataAccess.Entities
     {
         public UserEntity(User user)
         {
-            Id = int.Parse(user.Id);
+            Id = user.Id;
             Username = user.Username;
-            CapScore = Int32.Parse(user.CapScore);
+            CapScore = user.CapScore;
         }
 
         public UserEntity()
@@ -26,9 +26,9 @@ namespace de4aber.cAppsule.DataAccess.Entities
         {
             return new User()
             {
-                Id = Id.ToString(),
+                Id = Id,
                 Username = Username,
-                CapScore = CapScore.ToString()
+                CapScore = CapScore
             };
         }
     }

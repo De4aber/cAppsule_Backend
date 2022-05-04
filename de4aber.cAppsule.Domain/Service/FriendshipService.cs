@@ -21,41 +21,70 @@ namespace de4aber.cAppsule.Domain.Service
             _userRepository = userRepository ?? throw new InvalidDataException("Repository cannot be null");
         }
 
-        public List<FriendshipDTO> FindAll()
+        public List<Friendship> FindAll()
         {
-            return _friendshipRepository.FindAll().Select(f=> new FriendshipDTO()
-            {
-                Username1 = _userRepository.ReadById(Convert.ToInt32(f.UserIdRequesting)).Username,
-                Username2 = _userRepository.ReadById(Convert.ToInt32(f.UserIdRequested)).Username,
-                Accepted = f.Accepted
-            }).ToList();
+            return _friendshipRepository.FindAll();
         }
 
-        public List<UserDTO> FindByUserId(int userId)
+        public List<FriendDto> FindByUserId(int userId)
         {
             var friendList = _friendshipRepository.FindByUserId(userId);
-            List<UserDTO> userDtos = new List<UserDTO>();
+            List<FriendDto> userDtos = new List<FriendDto>();
             foreach (Friendship friendship in friendList)
             {
-                if (Int32.Parse(friendship.UserIdRequested) != userId)
+                if (friendship.UserIdRequested != userId)
                 {
-                    userDtos.Add(new UserDTO()
+                    userDtos.Add(new FriendDto()
                     {
-                        username = _userRepository.ReadById(Convert.ToInt32(friendship.UserIdRequested)).Username,
-                        capScore = Convert.ToInt32(_userRepository.ReadById(Convert.ToInt32(friendship.UserIdRequested)).CapScore)
+                        FriendshipId = friendship.Id,
+                        Username = _userRepository.ReadById(friendship.UserIdRequested).Username,
+                        CapScore = _userRepository.ReadById(friendship.UserIdRequested).CapScore
                     });
                 }
                 else
                 {
-                    userDtos.Add(new UserDTO()
+                    userDtos.Add(new FriendDto()
                     {
-                        username = _userRepository.ReadById(Convert.ToInt32(friendship.UserIdRequesting)).Username,
-                        capScore = Convert.ToInt32(_userRepository.ReadById(Convert.ToInt32(friendship.UserIdRequesting)).CapScore)
+                        FriendshipId = friendship.Id,
+                        Username = _userRepository.ReadById(friendship.UserIdRequesting).Username,
+                        CapScore = _userRepository.ReadById(friendship.UserIdRequesting).CapScore
                     });
                 }
             }
 
             return userDtos;
         }
+
+        public bool DeleteById(int friendshipId)
+        {
+            return _friendshipRepository.DeleteById(friendshipId);
+        }
+
+        public Friendship Create(Friendship friendship)
+        {
+            return _friendshipRepository.Create(friendship);
+        }
+
+        public Friendship Update(int friendShipId, Friendship friendship)
+        {
+            return _friendshipRepository.UpdateFriendship(friendShipId, friendship);
+        }
+
+        public Friendship RequestFriendship(FriendRequestDto friendRequestDto)
+        {
+            return _friendshipRepository.Create(new Friendship()
+            {
+                UserIdRequesting = friendRequestDto.FromUserId,
+                UserIdRequested = friendRequestDto.ToUserId,
+                Accepted = false
+            });
+        }
+
+        public Friendship AcceptFriendship(int friendshipId, int acceptingUserId)
+        {
+            return _friendshipRepository.AcceptFriendRequest(friendshipId, acceptingUserId);
+
+        }
+        
     }
 }

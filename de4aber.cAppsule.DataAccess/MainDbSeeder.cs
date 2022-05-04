@@ -38,6 +38,7 @@ namespace de4aber.cAppsule.DataAccess
             _ctx.Users.Add(new UserEntity() {Username = "Ove", CapScore = 3});
             _ctx.Users.Add(new UserEntity() {Username = "Bobo", CapScore = 70});
             _ctx.Users.Add(new UserEntity() {Username = "Kirsten", CapScore = 130});
+            _ctx.Users.Add(new UserEntity() {Username = "Bertramowitche", CapScore = 13120});
         }
 
         private void AddMockDataFriendships()

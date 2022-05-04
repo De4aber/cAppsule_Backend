@@ -2,9 +2,9 @@ namespace cAppsule
 {
     public class Friendship
     {
-        public string Id { get; set; }
-        public string UserIdRequesting { get; set; }
-        public string UserIdRequested { get; set; }
+        public int Id { get; set; }
+        public int UserIdRequesting { get; set; }
+        public int UserIdRequested { get; set; }
         public bool Accepted { get; set; } = false;
         
     }

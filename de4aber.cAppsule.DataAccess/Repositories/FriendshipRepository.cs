@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,12 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             return _ctx.Friendships.Select(f => f.ToFriendship()).ToList();
         }
 
+        public Friendship FindById(int friendshipId)
+        {
+            var friendshipEntity = _ctx.Friendships.Find(friendshipId);
+            return friendshipEntity?.ToFriendship() ?? throw new InvalidOperationException();
+        }
+
         public List<Friendship> FindByUserId(int userId)
         {
             return _ctx.Friendships
@@ -32,7 +39,44 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                 .ToList();
         }
 
-        
-        
+        public bool DeleteById(int id)
+        {
+            
+                var toDelete = _ctx.Friendships.Find(id);
+                if (toDelete == null) return false;
+                _ctx.Friendships.Remove(toDelete);
+                _ctx.SaveChanges();
+                return true;
+                
+        }
+
+        public Friendship Create(Friendship friendship)
+        {
+            FriendshipEntity friendshipEntity = new FriendshipEntity(friendship);
+            FriendshipEntity createdFriendshipEntity = _ctx.Friendships.Add(friendshipEntity).Entity;
+
+            _ctx.SaveChanges();
+
+            return createdFriendshipEntity.ToFriendship();
+        }
+
+        public Friendship UpdateFriendship(int id, Friendship friendship)
+        {
+            friendship.Id = id;
+            var updatedFriendship = _ctx.Friendships.Update(new FriendshipEntity(friendship)).Entity;
+            _ctx.SaveChanges();
+            return updatedFriendship.ToFriendship();
+        }
+
+        public Friendship AcceptFriendRequest(int friendshipId, int acceptingUserId)
+        {
+            var friendshipEntity = _ctx.Friendships.Find(friendshipId);
+            if (friendshipEntity.UserIdRequested == acceptingUserId)
+            {
+                friendshipEntity.Accepted = true;
+                _ctx.SaveChanges();
+            }
+            return friendshipEntity.ToFriendship();
+        }
     }
 }

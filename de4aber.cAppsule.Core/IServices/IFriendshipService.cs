@@ -6,7 +6,18 @@ namespace de4aber.cAppsule.Core.IServices
 {
     public interface IFriendshipService
     {
-        public List<FriendshipDTO> FindAll();
-        public List<UserDTO> FindByUserId(int userId);
+        public List<Friendship> FindAll();
+        public List<FriendDto> FindByUserId(int userId);
+        public bool DeleteById(int friendshipId);
+
+        public Friendship Create(Friendship friendship);
+
+        public Friendship Update(int friendShipId, Friendship friendship);
+        
+
+        public Friendship RequestFriendship(FriendRequestDto friendRequestDto);
+
+        public Friendship AcceptFriendship(int friendshipId, int acceptingUserId);
+
     }
 }

@@ -13,9 +13,9 @@ namespace de4aber.cAppsule.DataAccess.Entities
 
         public FriendshipEntity(Friendship friendship)
         {
-            Id = Convert.ToInt32(friendship.Id);
-            UserIdRequesting= Convert.ToInt32(friendship.UserIdRequesting);
-            UserIdRequested = Convert.ToInt32(friendship.UserIdRequested);
+            Id = friendship.Id;
+            UserIdRequesting= friendship.UserIdRequesting;
+            UserIdRequested = friendship.UserIdRequested;
             Accepted = friendship.Accepted;
         }
         
@@ -23,9 +23,9 @@ namespace de4aber.cAppsule.DataAccess.Entities
         {
             return new Friendship()
             {
-                Id = Id.ToString(),
-                UserIdRequesting = UserIdRequesting.ToString(),
-                UserIdRequested = UserIdRequested.ToString(),
+                Id = Id,
+                UserIdRequesting = UserIdRequesting,
+                UserIdRequested = UserIdRequested,
                 Accepted = Accepted
             };
         }

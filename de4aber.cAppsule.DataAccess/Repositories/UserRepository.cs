@@ -55,7 +55,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
 
         public User UpdateUser(int id, User user)
         {
-            user.Id = id.ToString();
+            user.Id = id;
             var updatedUser = _ctx.Users.Update(new UserEntity(user)).Entity;
             _ctx.SaveChanges();
             return updatedUser.ToUser();
