@@ -20,7 +20,7 @@ pipeline {
         stage("Reset containers"){
             steps{
                 sh "docker compose down"
-                sh "docker compose up -d --build --force-recreate --renew-anon-volumes"
+                sh "docker compose up -d --build"
             }
         }
     }
