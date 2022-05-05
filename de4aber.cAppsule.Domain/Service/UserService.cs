@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using cAppsule;
+using de4aber.cAppsule.Core.DTOs;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.Domain.IRepositories;
 
@@ -19,6 +21,11 @@ namespace de4aber.cAppsule.Domain.Service
         public List<User> GetUsers()
         {
             return _userRepository.FindAll();
+        }
+
+        public List<UserDTO> GetUserDtos()
+        {
+            return _userRepository.FindAll().Select(u => new UserDTO(u)).ToList();
         }
 
         public User GetById(int id)

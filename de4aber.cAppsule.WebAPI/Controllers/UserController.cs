@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using de4aber.cAppsule.Core.DTOs;
 using de4aber.cAppsule.Core.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,12 @@ namespace cAppsule.Controllers
         {
             return _userService.GetUsers();
         }
-
+        
+        [HttpGet(nameof(GetAllDTOs))]
+        public ActionResult<List<UserDTO>> GetAllDTOs()
+        {
+            return _userService.GetUserDtos();
+        }
         [HttpGet("{id}")]
         public ActionResult<User> GetById(int id)
         {
