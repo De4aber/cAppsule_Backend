@@ -46,13 +46,8 @@ namespace de4aber.cAppsule.DataAccess.Repositories
         {
             if (findUser(user.Username).Username != "null") throw new Exception("User already exists");
             
-            UserEntity userEntity = new UserEntity()
-            {
-                Username = user.Username,
-                Password = user.Password,
-                BirthDate =  user.BirthDate
-            };
-            UserEntity createdUserEntity = _ctx.Users.Add(userEntity).Entity;
+            
+            UserEntity createdUserEntity = _ctx.Users.Add(new UserEntity(user)).Entity;
 
             _ctx.SaveChanges();
 
