@@ -6,6 +6,7 @@ namespace de4aber.cAppsule.Domain.IRepositories
     public interface IUserRepository
     {
         public List<User> FindAll();
+
         
         /// <summary>
         /// Creates a new <c>User</c> entity and places it into the SQL-based database.
@@ -22,5 +23,15 @@ namespace de4aber.cAppsule.Domain.IRepositories
         /// <param name="user">User object containing everything that is needed for logging in</param>
         /// <returns>Login object containing needed info about the user, and valid token</returns>
         Login Login(User user);
+
+        public User ReadById(int id);
+
+        public User Create(User user);
+        
+        public bool DeleteById(int id);
+
+        public User UpdateUser(int id, User user);
+        List<User> SearchByUsername(string search);
+
     }
 }

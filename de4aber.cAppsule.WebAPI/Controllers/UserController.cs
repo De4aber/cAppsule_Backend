@@ -25,10 +25,36 @@ namespace cAppsule.Controllers
             return _userService.GetUsers();
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<User> GetById(int id)
+        {
+            return _userService.GetById(id);
+        }
+
         [HttpPost(nameof(CreateUser))]
         public ActionResult<User> CreateUser(User user)
         {
             return _userService.Create(user);
         }
+
+        [HttpDelete]
+        public ActionResult<bool> DeleteById(int id)
+        {
+            return _userService.DeleteById(id);
+        }
+
+        [HttpPut(nameof(UpdateUser))]
+        public ActionResult<User> UpdateUser(int id, User user)
+        {
+            return _userService.UpdateUser(id, user);
+        }
+        
+        [HttpGet(nameof(SearchByUsername) +"/{username}")]
+        public ActionResult<List<User>> SearchByUsername(string username)
+        {
+            return _userService.SearchByUsername(username);
+        }
+        
+        
     }
 }

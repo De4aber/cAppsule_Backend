@@ -21,6 +21,11 @@ namespace de4aber.cAppsule.Domain.Service
             return _userRepository.FindAll();
         }
 
+        public User GetById(int id)
+        {
+            return _userRepository.ReadById(id);
+        }
+
         public User Create(User user)
         {
             //TODO: move password check to service-level instead of repo. level for easier readability
@@ -30,6 +35,19 @@ namespace de4aber.cAppsule.Domain.Service
         public Login Login(User user)
         {
             return _userRepository.Login(user);
+        public bool DeleteById(int id)
+        {
+            return _userRepository.DeleteById(id);
+        }
+
+        public User UpdateUser(int id, User user)
+        {
+            return _userRepository.UpdateUser(id, user);
+        }
+
+        public List<User> SearchByUsername(string search)
+        {
+            return _userRepository.SearchByUsername(search);
         }
     }
 }

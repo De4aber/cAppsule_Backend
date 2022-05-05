@@ -1,4 +1,5 @@
 using System.Text;
+using cAppsule;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.DataAccess;
 using de4aber.cAppsule.DataAccess.Repositories;
@@ -40,9 +41,13 @@ namespace voresgruppe.ThirdSemesterExamBackend.WebApi
                 //MainDbSeeder
                 services.AddScoped<IMainDbSeeder, MainDbSeeder>();
 
-//Users
+                //Users
                 services.AddScoped<IUserRepository, UserRepository>();
                 services.AddScoped<IUserService, UserService>();
+                
+                //Friendships
+                services.AddScoped<IFriendshipRepository, FriendshipRepository>();
+                services.AddScoped<IFriendshipService, FriendshipService>();
                 
             
 

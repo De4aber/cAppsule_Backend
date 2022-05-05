@@ -22,11 +22,13 @@ namespace de4aber.cAppsule.DataAccess.Repositories
         public List<User> FindAll()
         {
             return _ctx.Users
-                .Select(u => new User()
-                {
-                    Id = u.Id.ToString(),
-                    Username = u.Username
-                }).ToList();
+                .Select(u => u.ToUser()).ToList();
+        }
+
+        public User ReadById(int id)
+        {
+            var userEntity = _ctx.Users.Find(id);
+            return userEntity?.ToUser() ?? throw new InvalidOperationException();
         }
         
         /// <summary>
@@ -41,7 +43,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
         }
         
         public User Create(User user)
-        {
+        {g
             if (findUser(user.Username).Username != "null") throw new Exception("User already exists");
             
             UserEntity userEntity = new UserEntity()
@@ -53,13 +55,18 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             UserEntity createdUserEntity = _ctx.Users.Add(userEntity).Entity;
 
             _ctx.SaveChanges();
-            User createdUser = new User()
-            {
-                Id = createdUserEntity.Id.ToString(),
-                Username = createdUserEntity.Username,
-            };
 
-            return createdUser;
+            return createdUserEntity.ToUser();
+        }
+
+        public bool DeleteById(int id)
+        {
+            var toDelete = _ctx.Users.Find(id);
+            if (toDelete == null) return false;
+            _ctx.Users.Remove(toDelete);
+            _ctx.SaveChanges();
+            return true;
+
         }
 
         public Login Login(User user)
@@ -78,5 +85,23 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             
             return login;
         }
+
+        public User UpdateUser(int id, User user)
+        {
+            user.Id = id;
+            var updatedUser = _ctx.Users.Update(new UserEntity(user)).Entity;
+            _ctx.SaveChanges();
+            return updatedUser.ToUser();
+        }
+
+        public List<User> SearchByUsername(string search)
+        {
+            return _ctx.Users
+                .Where(u => u.Username.ToLower().Contains(search.ToLower()))
+                .Select(u => u.ToUser()
+            ).ToList();
+        }
+        
+        
     }
 }
