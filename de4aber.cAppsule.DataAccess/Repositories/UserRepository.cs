@@ -43,7 +43,7 @@ namespace de4aber.cAppsule.DataAccess.Repositories
         }
         
         public User Create(User user)
-        {g
+        {
             if (findUser(user.Username).Username != "null") throw new Exception("User already exists");
             
             UserEntity userEntity = new UserEntity()

@@ -35,6 +35,7 @@ namespace de4aber.cAppsule.Domain.Service
         public Login Login(User user)
         {
             return _userRepository.Login(user);
+        }
         public bool DeleteById(int id)
         {
             return _userRepository.DeleteById(id);

@@ -25,8 +25,6 @@ namespace de4aber.cAppsule.Domain.IRepositories
         Login Login(User user);
 
         public User ReadById(int id);
-
-        public User Create(User user);
         
         public bool DeleteById(int id);
 
