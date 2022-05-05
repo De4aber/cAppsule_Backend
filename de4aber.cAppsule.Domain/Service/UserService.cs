@@ -28,9 +28,13 @@ namespace de4aber.cAppsule.Domain.Service
 
         public User Create(User user)
         {
+            //TODO: move password check to service-level instead of repo. level for easier readability
             return _userRepository.Create(user);
         }
 
+        public Login Login(User user)
+        {
+            return _userRepository.Login(user);
         public bool DeleteById(int id)
         {
             return _userRepository.DeleteById(id);

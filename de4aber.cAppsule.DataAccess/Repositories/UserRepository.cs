@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using cAppsule;
@@ -29,12 +30,27 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             var userEntity = _ctx.Users.Find(id);
             return userEntity?.ToUser() ?? throw new InvalidOperationException();
         }
-
-        public User Create(User user)
+        
+        /// <summary>
+        /// Finds a given user within the database by a given <c>username</c>
+        /// </summary>
+        /// <param name="username">the username of the wanted user</param>
+        /// <returns><c>UserEntity</c> of either the found <c>User</c>, or a new <c>User</c> with it's name set to <c>"null"</c></returns>
+        public UserEntity findUser(string username)
         {
-            UserEntity userEntity = new()
+            return _ctx.Users.FirstOrDefault(user => user.Username == username)
+                   ?? new UserEntity{ Username = "null" };
+        }
+        
+        public User Create(User user)
+        {g
+            if (findUser(user.Username).Username != "null") throw new Exception("User already exists");
+            
+            UserEntity userEntity = new UserEntity()
             {
-                Username = user.Username
+                Username = user.Username,
+                Password = user.Password,
+                BirthDate =  user.BirthDate
             };
             UserEntity createdUserEntity = _ctx.Users.Add(userEntity).Entity;
 
@@ -51,6 +67,23 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             _ctx.SaveChanges();
             return true;
 
+        }
+
+        public Login Login(User user)
+        {
+            UserEntity foundUser = findUser(user.Username);
+            if (foundUser.Username == "null") throw new Exception("User not found in the database!");
+            if (foundUser.Password != user.Password)
+                throw new Exception("Username doesn't match with found password from database!");
+
+            //TODO: Add a token system
+            Login login = new Login()
+            {
+                Id = foundUser.Id,
+                Username = foundUser.Username
+            };
+            
+            return login;
         }
 
         public User UpdateUser(int id, User user)
