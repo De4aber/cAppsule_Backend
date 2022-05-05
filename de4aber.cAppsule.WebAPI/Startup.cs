@@ -78,7 +78,7 @@ namespace voresgruppe.ThirdSemesterExamBackend.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, MainDbContext context, 
             IMainDbSeeder mainDbSeeder)
         {
-
+            new MainDbSeeder(context).SeedDevelopment();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -87,8 +87,6 @@ namespace voresgruppe.ThirdSemesterExamBackend.WebApi
 
                 app.UseSwaggerUI();
                 app.UseCors("Dev-cors");
-            
-                mainDbSeeder.SeedDevelopment();
             }
            
             
