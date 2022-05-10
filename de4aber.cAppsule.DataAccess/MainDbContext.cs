@@ -13,6 +13,7 @@ namespace de4aber.cAppsule.DataAccess
         
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<FriendshipEntity> Friendships { get; set; }
+        public virtual DbSet<CappsuleEntity> Cappsules { get; set; }
 
     }  
 }
