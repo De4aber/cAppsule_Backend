@@ -30,7 +30,7 @@ namespace cAppsule.Controllers
         }
         
         [HttpGet(nameof(GetFriendRequestsByUserId) +"/{userId}")]
-        public ActionResult<List<Friendship>> GetFriendRequestsByUserId(string userId)
+        public ActionResult<List<FriendRequestReceiverDto>> GetFriendRequestsByUserId(string userId)
         {
             return _friendshipService.FindFriendRequestsByUserId(Convert.ToInt32(userId));
         }
