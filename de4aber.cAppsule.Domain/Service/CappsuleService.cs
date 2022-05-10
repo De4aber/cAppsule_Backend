@@ -1,4 +1,5 @@
-﻿using de4aber.cAppsule.Core.IServices;
+﻿using System.Collections.Generic;
+using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.Core.Models;
 
 namespace de4aber.cAppsule.Domain.Service
@@ -10,7 +11,7 @@ namespace de4aber.cAppsule.Domain.Service
             throw new System.NotImplementedException();
         }
 
-        public Cappsule getCappsules(int userId)
+        public List<Cappsule> getCappsules(int userId)
         {
             throw new System.NotImplementedException();
         }
