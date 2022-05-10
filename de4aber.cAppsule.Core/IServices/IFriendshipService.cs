@@ -8,6 +8,8 @@ namespace de4aber.cAppsule.Core.IServices
     {
         public List<Friendship> FindAll();
         public List<FriendDto> FindByUserId(int userId);
+        
+        public List<Friendship> FindFriendRequestsByUserId(int userId);
         public bool DeleteById(int friendshipId);
 
         public Friendship Create(Friendship friendship);

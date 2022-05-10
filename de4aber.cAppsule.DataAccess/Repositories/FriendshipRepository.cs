@@ -39,6 +39,16 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                 .ToList();
         }
 
+        public List<Friendship> FindFriendRequestsByUserId(int userId)
+        {
+            return _ctx.Friendships
+                .Where(fr => fr.Accepted == false
+                             && (fr.UserIdRequested == userId))
+                .Select(fr => fr.ToFriendship())
+                .ToList();
+
+        }
+
         public bool DeleteById(int id)
         {
             

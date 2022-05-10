@@ -57,6 +57,12 @@ namespace de4aber.cAppsule.DataAccess
                 UserIdRequesting = 3,
                 Accepted = true
             });
+            _ctx.Friendships.Add(new FriendshipEntity()
+            {
+                UserIdRequested = 1,
+                UserIdRequesting = 4,
+                Accepted = false
+            });
         }
 
         private void AddMockDataCappsules()

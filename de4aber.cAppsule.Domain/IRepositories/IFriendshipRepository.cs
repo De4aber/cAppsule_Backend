@@ -10,6 +10,8 @@ namespace de4aber.cAppsule.Domain.IRepositories
 
         public Friendship FindById(int friendshipId);
         public List<Friendship> FindByUserId(int userId);
+        
+        public List<Friendship> FindFriendRequestsByUserId(int userId);
 
         public bool DeleteById(int id);
         
@@ -18,6 +20,6 @@ namespace de4aber.cAppsule.Domain.IRepositories
         public Friendship UpdateFriendship(int id, Friendship friendship);
 
         public Friendship AcceptFriendRequest(int friendshipId, int acceptingUserId);
-
+        
     }
 }

@@ -55,6 +55,11 @@ namespace de4aber.cAppsule.Domain.Service
             return userDtos;
         }
 
+        public List<Friendship> FindFriendRequestsByUserId(int userId)
+        {
+            return _friendshipRepository.FindFriendRequestsByUserId(userId);
+        }
+
         public bool DeleteById(int friendshipId)
         {
             return _friendshipRepository.DeleteById(friendshipId);

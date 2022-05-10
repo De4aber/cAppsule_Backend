@@ -6,5 +6,7 @@ namespace de4aber.cAppsule.Core.DTOs
         public string Username2 { get; set; }
         
         public bool Accepted { get; set; }
+        
+        
     }
 }
