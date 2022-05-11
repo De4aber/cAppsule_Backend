@@ -43,14 +43,13 @@ namespace cAppsule.Controllers
         
         [HttpPost(nameof(RequestFriend))]
 
-        public ActionResult<FriendRequestDto> RequestFriend(FriendRequestDto friendship)
+        public ActionResult<bool> RequestFriend(FriendRequestDto friendship)
         {
-            _friendshipService.RequestFriendship(friendship);
-            return friendship;
+            return _friendshipService.RequestFriendship(friendship);
         }
         
         [HttpPut(nameof(AcceptFriendRequest))]
-        public ActionResult<Friendship> AcceptFriendRequest(int friendshipId, int acceptingUserId)
+        public ActionResult<FriendDto> AcceptFriendRequest(int friendshipId, int acceptingUserId)
         {
             return _friendshipService.AcceptFriendship(friendshipId, acceptingUserId);
         }

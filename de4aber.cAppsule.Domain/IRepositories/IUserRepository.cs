@@ -31,5 +31,7 @@ namespace de4aber.cAppsule.Domain.IRepositories
         public User UpdateUser(int id, User user);
         List<User> SearchByUsername(string search);
 
+        public User FindByUsername(string username);
+
     }
 }

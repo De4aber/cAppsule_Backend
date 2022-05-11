@@ -82,20 +82,29 @@ namespace de4aber.cAppsule.Domain.Service
             return _friendshipRepository.UpdateFriendship(friendShipId, friendship);
         }
 
-        public Friendship RequestFriendship(FriendRequestDto friendRequestDto)
+        public bool RequestFriendship(FriendRequestDto friendRequestDto)
         {
-            return _friendshipRepository.Create(new Friendship()
+            _friendshipRepository.Create(new Friendship()
             {
                 UserIdRequesting = friendRequestDto.FromUserId,
-                UserIdRequested = friendRequestDto.ToUserId,
+                UserIdRequested = _userRepository.FindByUsername(friendRequestDto.ToUsername).Id,
                 Accepted = false
             });
+
+            return true;
         }
 
-        public Friendship AcceptFriendship(int friendshipId, int acceptingUserId)
+        public FriendDto AcceptFriendship(int friendshipId, int acceptingUserId)
         {
-            return _friendshipRepository.AcceptFriendRequest(friendshipId, acceptingUserId);
+           var friendship = _friendshipRepository.AcceptFriendRequest(friendshipId, acceptingUserId);
+           var newFriend = _userRepository.ReadById(friendship.UserIdRequesting);
+           return new FriendDto
+           {
+               FriendshipId = friendship.Id,
+               Username = newFriend.Username,
+               CapScore = newFriend.CapScore
 
+           };
         }
         
     }

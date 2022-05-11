@@ -96,7 +96,11 @@ namespace de4aber.cAppsule.DataAccess.Repositories
                 .Select(u => u.ToUser()
             ).ToList();
         }
-        
-        
+
+        public User FindByUsername(string username)
+        {
+            return _ctx.Users.FirstOrDefault(u => u.Username == username)?.ToUser() 
+                   ?? throw new InvalidOperationException("No user with that exact username");
+        }
     }
 }
