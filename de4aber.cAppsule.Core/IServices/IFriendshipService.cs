@@ -16,10 +16,11 @@ namespace de4aber.cAppsule.Core.IServices
 
         public Friendship Update(int friendShipId, Friendship friendship);
         
-
         public bool RequestFriendship(FriendRequestDto friendRequestDto);
 
         public FriendDto AcceptFriendship(int friendshipId, int acceptingUserId);
+
+        public List<SearchForUserIsFriendDTO> SearchForUsernames_FilterIsFriends(string search, int userId);
 
     }
 }

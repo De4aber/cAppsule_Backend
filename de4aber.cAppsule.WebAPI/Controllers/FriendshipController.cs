@@ -35,6 +35,12 @@ namespace cAppsule.Controllers
             return _friendshipService.FindFriendRequestsByUserId(Convert.ToInt32(userId));
         }
         
+        [HttpGet(nameof(SearchForUsernames_FilterIsFriends) +"/{userId}"+"/{searchStr}")]
+        public ActionResult<List<SearchForUserIsFriendDTO>> SearchForUsernames_FilterIsFriends(string searchStr, string userId)
+        {
+            return _friendshipService.SearchForUsernames_FilterIsFriends(searchStr, Convert.ToInt32(userId));
+        }
+        
         [HttpDelete]
         public ActionResult<bool> DeleteById(int id)
         {

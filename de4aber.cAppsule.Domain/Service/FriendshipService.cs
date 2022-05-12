@@ -106,6 +106,35 @@ namespace de4aber.cAppsule.Domain.Service
 
            };
         }
-        
+
+        public List<SearchForUserIsFriendDTO> SearchForUsernames_FilterIsFriends(string search, int userId)
+        {
+            var friends = FindByUserId(userId);
+            var searchUsers = _userRepository.SearchByUsername(search);
+            var response = new List<SearchForUserIsFriendDTO>();
+            foreach (User searchUser in searchUsers)
+            {
+                var isFriendship = (friends.Find(f => f.Username == searchUser.Username) != null) ;
+                if (isFriendship)
+                {
+                    response.Add(new SearchForUserIsFriendDTO
+                    {
+                        Username = searchUser.Username,
+                        IsFriends = true
+                    });
+                }
+                else
+                {
+                    response.Add(new SearchForUserIsFriendDTO
+                    {
+                        Username = searchUser.Username,
+                        IsFriends = false
+                    });
+                }
+            }
+
+            return response;
+
+        }
     }
 }
