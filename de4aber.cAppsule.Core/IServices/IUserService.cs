@@ -14,7 +14,7 @@ namespace de4aber.cAppsule.Core.IServices
         Login Login(User user);
         public bool DeleteById(int id);
         public User UpdateUser(int id, User user);
-        public List<User> SearchByUsername(string search);
+        public List<UserLimitedInfoDTO> SearchByUsername(string search);
         
     }
 }

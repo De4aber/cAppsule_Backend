@@ -56,7 +56,7 @@ namespace cAppsule.Controllers
         }
         
         [HttpGet(nameof(SearchByUsername) +"/{username}")]
-        public ActionResult<List<User>> SearchByUsername(string username)
+        public ActionResult<List<UserLimitedInfoDTO>> SearchByUsername(string username)
         {
             return _userService.SearchByUsername(username);
         }
