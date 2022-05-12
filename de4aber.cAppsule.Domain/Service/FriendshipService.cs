@@ -114,22 +114,25 @@ namespace de4aber.cAppsule.Domain.Service
             var response = new List<SearchForUserIsFriendDTO>();
             foreach (User searchUser in searchUsers)
             {
-                var isFriendship = (friends.Find(f => f.Username == searchUser.Username) != null) ;
-                if (isFriendship)
+                if(searchUser.Id != userId)
                 {
-                    response.Add(new SearchForUserIsFriendDTO
+                    var isFriendship = (friends.Find(f => f.Username == searchUser.Username) != null);
+                    if (isFriendship)
                     {
-                        Username = searchUser.Username,
-                        IsFriends = true
-                    });
-                }
-                else
-                {
-                    response.Add(new SearchForUserIsFriendDTO
+                        response.Add(new SearchForUserIsFriendDTO
+                        {
+                            Username = searchUser.Username,
+                            IsFriends = true
+                        });
+                    }
+                    else
                     {
-                        Username = searchUser.Username,
-                        IsFriends = false
-                    });
+                        response.Add(new SearchForUserIsFriendDTO
+                        {
+                            Username = searchUser.Username,
+                            IsFriends = false
+                        });
+                    }
                 }
             }
 
