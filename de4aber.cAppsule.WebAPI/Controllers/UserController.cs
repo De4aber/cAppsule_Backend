@@ -38,9 +38,14 @@ namespace cAppsule.Controllers
         }
 
         [HttpPost(nameof(CreateUser))]
-        public ActionResult<UserDTO> CreateUser(CreateUserDTO user)
+        public ActionResult<UserDTO> CreateUser(string username, string password, string birthDate)
         {
-            return _userService.Create(user);
+            return _userService.Create(new CreateUserDTO
+            {
+                Username = username,
+                Password = password,
+                BirthDate = birthDate
+            });
         }
 
         [HttpDelete]
