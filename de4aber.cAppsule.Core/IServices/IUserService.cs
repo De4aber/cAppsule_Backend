@@ -10,7 +10,7 @@ namespace de4aber.cAppsule.Core.IServices
 
         public List<UserDTO> GetUserDtos();
         public User GetById(int id);
-        User Create(CreateUserDTO user);
+        UserDTO Create(CreateUserDTO user);
         Login Login(User user);
         public bool DeleteById(int id);
         public User UpdateUser(int id, User user);

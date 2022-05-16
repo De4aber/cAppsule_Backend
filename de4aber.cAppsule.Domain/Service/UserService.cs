@@ -34,16 +34,18 @@ namespace de4aber.cAppsule.Domain.Service
             return _userRepository.ReadById(id);
         }
 
-        public User Create(CreateUserDTO user)
+        public UserDTO Create(CreateUserDTO user)
         {
             //TODO: move password check to service-level instead of repo. level for easier readability
-            return _userRepository.Create(new User
+            var newUser = _userRepository.Create(new User
             {
                 Username = user.Username,
                 BirthDate = DateTime.Parse(user.BirthDate),
                 Password = user.Password,
                 CapScore = 0
             });
+
+            return new UserDTO(newUser);
         }
 
         public Login Login(User user)
