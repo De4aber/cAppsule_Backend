@@ -30,7 +30,6 @@ namespace de4aber.cAppsule.Domain.Service
         {
             return _capsuleRepository.FindByReceiverId(receiverId).Select(c => new ReceiveCapsuleDTO
             {
-                ReceiverId = c.ReceiverId,
                 SenderUsername = _userRepository.ReadById(c.SenderId).Username,
                 Message = c.Message,
                 Latitude = c.Latitude,
