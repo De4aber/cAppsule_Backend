@@ -22,10 +22,10 @@ namespace de4aber.cAppsule.Security.Repositories
             };
         }
         
-        public AuthUser FindUser(string username)
+        public AuthUser FindUser(AuthUser user)
         {
-            AuthUserEntity user = _ctx.AuthUsers.FirstOrDefault(user => username.Equals(user.Username));
-            return (user == null) ? null : EntityToUser(user);
+            AuthUserEntity u = _ctx.AuthUsers.FirstOrDefault(user => user.Equals(user.Username));
+            return (u == null) ? null : EntityToUser(u);
         }
     }
 }

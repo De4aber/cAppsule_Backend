@@ -4,6 +4,6 @@ namespace de4aber.cAppsule.Security.IRepositories
 {
     public interface IAuthRepository
     {
-        AuthUser FindUser(string username);
+        AuthUser FindUser(AuthUser user);
     }
 }

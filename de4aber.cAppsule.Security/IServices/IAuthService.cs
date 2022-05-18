@@ -4,6 +4,6 @@ namespace de4aber.cAppsule.Security.IServices
 {
     public interface IAuthService
     {
-        public AuthUser GetUser(string username);
+        public AuthUser Login(AuthUser user);
     }
 }

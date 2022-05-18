@@ -12,9 +12,9 @@ namespace de4aber.cAppsule.Security.Services
         {
             _repo = repo;
         }
-        public AuthUser GetUser(string username)
+        public AuthUser Login(AuthUser user)
         {
-            return _repo.FindUser(username);
+            return _repo.FindUser(user);
         }
     }
 }
