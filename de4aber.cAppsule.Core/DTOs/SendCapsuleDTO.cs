@@ -2,7 +2,6 @@ namespace de4aber.cAppsule.Core.DTOs
 {
     public class SendCapsuleDTO
     {
-        public int Id { get; set; }
         public int SenderId { get; set; }
         public string RecieverUsername { get; set; }
         public string? Message { get; set; }
