@@ -8,6 +8,8 @@ namespace de4aber.cAppsule.Core.IServices
     {
         public List<Capsule> GetAll();
 
+        public List<ReceiveCapsuleDTO> GetByReceiverId(int receiverId);
+
         public bool SendCapsule(SendCapsuleDTO capsule);
     }
 }

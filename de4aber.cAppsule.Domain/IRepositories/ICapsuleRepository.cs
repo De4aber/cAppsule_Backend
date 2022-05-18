@@ -6,7 +6,10 @@ namespace de4aber.cAppsule.Domain.IRepositories
     public interface ICapsuleRepository
     {
         public List<Capsule> FindAll();
+        
+        public List<Capsule> FindByReceiverId(int receiverId);
 
         public Capsule Create(Capsule capsule);
+        
     }
 }

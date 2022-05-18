@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using de4aber.cAppsule.Core.DTOs;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.Core.Models;
@@ -23,6 +24,20 @@ namespace de4aber.cAppsule.Domain.Service
         public List<Capsule> GetAll()
         {
             return _capsuleRepository.FindAll();
+        }
+
+        public List<ReceiveCapsuleDTO> GetByReceiverId(int receiverId)
+        {
+            return _capsuleRepository.FindByReceiverId(receiverId).Select(c => new ReceiveCapsuleDTO
+            {
+                ReceiverId = c.ReceiverId,
+                SenderUsername = _userRepository.ReadById(c.SenderId).Username,
+                Message = c.Message,
+                Latitude = c.Latitude,
+                Longitude = c.Longitude,
+                Time = c.Time.ToString(),
+                Photo = c.Photo,
+            }).ToList();
         }
 
         public bool SendCapsule(SendCapsuleDTO capsule)

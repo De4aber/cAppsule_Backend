@@ -24,6 +24,12 @@ namespace cAppsule.Controllers
             return _capsuleService.GetAll();
         }
 
+        [HttpGet(nameof(GetByReceiverId))]
+        public ActionResult<List<ReceiveCapsuleDTO>> GetByReceiverId(int receiverId)
+        {
+            return _capsuleService.GetByReceiverId(receiverId);
+        }
+
         [HttpPost(nameof(SendCapsule))]
         public ActionResult<bool> SendCapsule(SendCapsuleDTO capsuleDto)
         {

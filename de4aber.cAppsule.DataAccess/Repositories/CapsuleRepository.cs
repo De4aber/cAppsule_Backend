@@ -21,6 +21,11 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             return _ctx.Cappsules.Select(c => c.ToCapsule()).ToList();
         }
 
+        public List<Capsule> FindByReceiverId(int receiverId)
+        {
+            return _ctx.Cappsules.Where(c => c.ReceiverId == receiverId).Select(c => c.ToCapsule()).ToList();
+        }
+
         public Capsule Create(Capsule capsule)
         {
             CapsuleEntity capsuleEntity = _ctx.Cappsules.Add(new CapsuleEntity(capsule)).Entity;
