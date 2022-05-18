@@ -4,7 +4,7 @@ using de4aber.cAppsule.Core.Models;
 
 namespace de4aber.cAppsule.DataAccess.Entities
 {
-    public class CappsuleEntity
+    public class CapsuleEntity
     {
         public int Id { get; set; }
         public int SenderId { get; set; }
@@ -38,6 +38,23 @@ namespace de4aber.cAppsule.DataAccess.Entities
             }
 
             return Convert.ToDateTime(str);
+        }
+
+        public CapsuleEntity(Capsule capsule)
+        {
+            Id = capsule.Id;
+            ReceiverId = capsule.ReceiverId;
+            SenderId = capsule.SenderId;
+            Message = capsule.Message;
+            Time = capsule.Time.ToString();
+            Latitude = capsule.Latitude;
+            Longitude = capsule.Longitude;
+            Photo = capsule.Photo;
+
+        }
+
+        public CapsuleEntity()
+        {
         }
     }
 }

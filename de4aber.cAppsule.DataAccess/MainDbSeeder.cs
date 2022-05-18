@@ -67,7 +67,7 @@ namespace de4aber.cAppsule.DataAccess
 
         private void AddMockDataCappsules()
         {
-            _ctx.Cappsules.Add(new CappsuleEntity()
+            _ctx.Cappsules.Add(new CapsuleEntity()
             {
                 SenderId = 1,
                 ReceiverId = 3,
