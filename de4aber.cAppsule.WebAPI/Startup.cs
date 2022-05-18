@@ -49,6 +49,10 @@ namespace voresgruppe.ThirdSemesterExamBackend.WebApi
                 services.AddScoped<IFriendshipRepository, FriendshipRepository>();
                 services.AddScoped<IFriendshipService, FriendshipService>();
                 
+                //Capsules
+                services.AddScoped<ICapsuleRepository, CapsuleRepository>();
+                services.AddScoped<ICapsuleService, CapsuleService>();
+                
             
 
             

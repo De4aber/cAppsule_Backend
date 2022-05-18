@@ -69,20 +69,13 @@ namespace de4aber.cAppsule.DataAccess
         {
             _ctx.Cappsules.Add(new CappsuleEntity()
             {
-                id = 0,
-                image = new Photo()
-                {
-                    Id = 0,
-                    Bytes = Array.Empty<byte>(),
-                    Description = "test",
-                    FileExtension = ".png",
-                    Size = 0
-                },
-                lattitude = 0,
-                longitute = 0,
-                openTime = DateTime.Now.ToString(),
-                reciever = 3,
-                sender = 1
+                SenderId = 1,
+                ReceiverId = 3,
+                Latitude = null,
+                Longitude = null,
+                Message = "Esbjerg Banegård",
+                Photo = null,
+                Time = "2022-05-16T21:54:26"
             });
         }
     }
