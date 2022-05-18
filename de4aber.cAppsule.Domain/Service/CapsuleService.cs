@@ -59,7 +59,7 @@ namespace de4aber.cAppsule.Domain.Service
         
         private static DateTime? IfTimeNull(string? str)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(str) || str.StartsWith("null"))
             {
                 return null;
             }
