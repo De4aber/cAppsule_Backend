@@ -17,6 +17,7 @@
       <ProjectReference Include="..\de4aber.cAppsule.Core\de4aber.cAppsule.Core.csproj" />
       <ProjectReference Include="..\de4aber.cAppsule.DataAccess\de4aber.cAppsule.DataAccess.csproj" />
       <ProjectReference Include="..\de4aber.cAppsule.Domain\de4aber.cAppsule.Domain.csproj" />
+      <ProjectReference Include="..\de4aber.cAppsule.Security\de4aber.cAppsule.Security.csproj" />
     </ItemGroup>
 
 </Project>

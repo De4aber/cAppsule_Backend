@@ -5,6 +5,11 @@ using de4aber.cAppsule.DataAccess;
 using de4aber.cAppsule.DataAccess.Repositories;
 using de4aber.cAppsule.Domain.IRepositories;
 using de4aber.cAppsule.Domain.Service;
+using de4aber.cAppsule.Security;
+using de4aber.cAppsule.Security.IRepositories;
+using de4aber.cAppsule.Security.IServices;
+using de4aber.cAppsule.Security.Repositories;
+using de4aber.cAppsule.Security.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -49,15 +54,21 @@ namespace voresgruppe.ThirdSemesterExamBackend.WebApi
                 services.AddScoped<IFriendshipRepository, FriendshipRepository>();
                 services.AddScoped<IFriendshipService, FriendshipService>();
                 
-            
+                //Security
+                services.AddScoped<IAuthRepository, AuthRepository>();
+                services.AddScoped<IAuthService, AuthService>();
+                services.AddScoped<IAuthDbSeeder, AuthDbSeeder>();
 
             
             //Setting up DB info
-            services.AddDbContext<MainDbContext>(
-                options =>
-                {
-                    options.UseSqlite("Data Source=main.db");
-                });
+            services.AddDbContext<MainDbContext>(options => {
+                options.UseSqlite("Data Source=main.db");
+            });
+
+            services.AddDbContext<AuthDbContext>(options =>
+            {
+                options.UseSqlite("Data Source=auth.db");
+            });
             
             services.AddCors(options =>
             {
