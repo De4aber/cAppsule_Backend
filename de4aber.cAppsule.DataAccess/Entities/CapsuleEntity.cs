@@ -13,7 +13,7 @@ namespace de4aber.cAppsule.DataAccess.Entities
         public string? Time { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
-        public byte[]? Photo { get; set; }
+        public string? Photo { get; set; }
 
         public Capsule ToCapsule()
         {

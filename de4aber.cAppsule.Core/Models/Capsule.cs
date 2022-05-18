@@ -11,7 +11,7 @@ namespace de4aber.cAppsule.Core.Models
         public DateTime? Time { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
-        public byte[]? Photo { get; set; }
+        public string? Photo { get; set; }
         
     }
 }
