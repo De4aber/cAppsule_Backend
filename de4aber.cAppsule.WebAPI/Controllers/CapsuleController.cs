@@ -24,7 +24,7 @@ namespace cAppsule.Controllers
             return _capsuleService.GetAll();
         }
 
-        [HttpPost]
+        [HttpPost(nameof(SendCapsule))]
         public ActionResult<bool> SendCapsule(SendCapsuleDTO capsuleDto)
         {
             return _capsuleService.SendCapsule(capsuleDto);
