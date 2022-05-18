@@ -71,8 +71,8 @@ namespace de4aber.cAppsule.DataAccess
             {
                 SenderId = 1,
                 ReceiverId = 3,
-                Latitude = null,
-                Longitude = null,
+                Latitude = 55.46910408813035, 
+                Longitude = 8.458843244655215,
                 Message = "Esbjerg Banegård",
                 Photo = null,
                 Time = "2022-05-16T21:54:26"
