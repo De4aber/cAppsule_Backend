@@ -24,7 +24,7 @@ namespace de4aber.cAppsule.Security.Services
         public JwtToken GenerateJwtToken(string username, string password)
         {
             var user = _authService.GetUser(username);
-            
+
             if (Authenticate(password,user))
             {
                 var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"]));

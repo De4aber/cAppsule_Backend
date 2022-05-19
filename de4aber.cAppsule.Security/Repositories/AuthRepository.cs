@@ -1,13 +1,16 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using de4aber.cAppsule.Security;
 using de4aber.cAppsule.Security.Entities;
 using de4aber.cAppsule.Security.IRepositories;
 using de4aber.cAppsule.Security.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace de4aber.cAppsule.Security.Repositories
 {
-    public class AuthRepository: IAuthRepository
+    public class AuthRepository : IAuthRepository
     {
         private readonly AuthDbContext _ctx;
 
@@ -19,8 +22,8 @@ namespace de4aber.cAppsule.Security.Repositories
         public AuthUser FindByUsernameAndPassword(string username, string password)
         {
             AuthUserEntity authUserEntity = _ctx.AuthUsers
-                .FirstOrDefault(user => 
-                    username.Equals(user.Username) 
+                .FirstOrDefault(user =>
+                    username.Equals(user.Username)
                     && password.Equals(user.HashedPassword));
             return EntityToAuthUser(authUserEntity);
         }
@@ -45,5 +48,22 @@ namespace de4aber.cAppsule.Security.Repositories
             return EntityToAuthUser(entity);
         }
 
+        public void CreateUser(int id, string username, string password)
+        {
+            AuthUserEntity au = new AuthUserEntity()
+            {
+                Id = id,
+                Username = username,
+                HashedPassword = password,
+                Salt = "123#!"
+            };
+            _ctx.AuthUsers.Add(au);
+            _ctx.SaveChanges();
+        }
+
+        public List<AuthUserEntity> GetAll()
+        {
+            return _ctx.AuthUsers.Select(u => u).ToList();
+        }
     }
 }
