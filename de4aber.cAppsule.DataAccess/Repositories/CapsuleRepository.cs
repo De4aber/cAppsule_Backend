@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,6 +32,12 @@ namespace de4aber.cAppsule.DataAccess.Repositories
             CapsuleEntity capsuleEntity = _ctx.Cappsules.Add(new CapsuleEntity(capsule)).Entity;
             _ctx.SaveChanges();
             return capsuleEntity.ToCapsule();
+        }
+
+        public Capsule ReadById(int capsuleId)
+        {
+            var capsuleEntity = _ctx.Cappsules.Find(capsuleId);
+            return capsuleEntity?.ToCapsule() ?? throw new InvalidOperationException();
         }
     }
 }

@@ -6,6 +6,7 @@ using de4aber.cAppsule.Core.DTOs;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.Core.Models;
 using de4aber.cAppsule.Domain.IRepositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace de4aber.cAppsule.Domain.Service
 {
@@ -28,9 +29,8 @@ namespace de4aber.cAppsule.Domain.Service
 
         public List<ReceiveCapsuleDTO> GetByReceiverId(int receiverId)
         {
-            return _capsuleRepository.FindByReceiverId(receiverId).Select(c => new ReceiveCapsuleDTO
+            return _capsuleRepository.FindByReceiverId(receiverId).Select(c => new ReceiveCapsuleDTO(c.Id, _userRepository.ReadById(c.SenderId).Username)
             {
-                SenderUsername = _userRepository.ReadById(c.SenderId).Username,
                 Message = c.Message,
                 Latitude = c.Latitude,
                 Longitude = c.Longitude,
@@ -56,7 +56,20 @@ namespace de4aber.cAppsule.Domain.Service
 
             return true;
         }
-        
+
+        public ReceiveCapsuleDTO GetById(int capsuleId)
+        {
+            var c = _capsuleRepository.ReadById(capsuleId);
+            return new ReceiveCapsuleDTO(c.Id, _userRepository.ReadById(c.SenderId).Username)
+            {
+                Message = c.Message,
+                Latitude = c.Latitude,
+                Longitude = c.Longitude,
+                Time = c.Time.ToString(),
+                Photo = c.Photo,
+            };
+        }
+
         private static DateTime? IfTimeNull(string? str)
         {
             if (string.IsNullOrEmpty(str) || str.StartsWith("null"))
