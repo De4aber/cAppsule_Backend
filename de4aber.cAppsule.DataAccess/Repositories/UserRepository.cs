@@ -64,23 +64,6 @@ namespace de4aber.cAppsule.DataAccess.Repositories
 
         }
 
-        public Login Login(User user)
-        {
-            UserEntity foundUser = findUser(user.Username);
-            if (foundUser.Username == "null") throw new Exception("User not found in the database!");
-            if (foundUser.Password != user.Password)
-                throw new Exception("Username doesn't match with found password from database!");
-
-            //TODO: Add a token system
-            Login login = new Login()
-            {
-                Id = foundUser.Id,
-                Username = foundUser.Username
-            };
-            
-            return login;
-        }
-
         public User UpdateUser(int id, User user)
         {
             user.Id = id;

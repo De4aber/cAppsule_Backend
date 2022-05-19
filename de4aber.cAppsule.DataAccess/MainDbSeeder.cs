@@ -37,10 +37,10 @@ namespace de4aber.cAppsule.DataAccess
 
         private void AddMockDataUser()
         {
-            _ctx.Users.Add(new UserEntity() {Username = "Ove", CapScore = 3, Password = "hej", BirthDate = DateTime.Now.ToString()});
-            _ctx.Users.Add(new UserEntity() {Username = "Bobo", CapScore = 70, Password = "hej", BirthDate = DateTime.Now.ToString()});
-            _ctx.Users.Add(new UserEntity() {Username = "Kirsten", CapScore = 130, Password = "hej", BirthDate = DateTime.Now.ToString()});
-            _ctx.Users.Add(new UserEntity() {Username = "Bertramowitche", CapScore = 13120, Password = "hej", BirthDate = DateTime.Now.ToString()});
+            _ctx.Users.Add(new UserEntity() {Username = "Ove", CapScore = 3,  BirthDate = DateTime.Now.ToString()});
+            _ctx.Users.Add(new UserEntity() {Username = "Bobo", CapScore = 70,  BirthDate = DateTime.Now.ToString()});
+            _ctx.Users.Add(new UserEntity() {Username = "Kirsten", CapScore = 130, BirthDate = DateTime.Now.ToString()});
+            _ctx.Users.Add(new UserEntity() {Username = "Bertramowitche", CapScore = 13120, BirthDate = DateTime.Now.ToString()});
         }
 
         private void AddMockDataFriendships()

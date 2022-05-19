@@ -41,17 +41,12 @@ namespace de4aber.cAppsule.Domain.Service
             {
                 Username = user.Username,
                 BirthDate = DateTime.Parse(user.BirthDate),
-                Password = user.Password,
                 CapScore = 0
             });
 
             return new UserDTO(newUser);
         }
 
-        public Login Login(User user)
-        {
-            return _userRepository.Login(user);
-        }
         public bool DeleteById(int id)
         {
             return _userRepository.DeleteById(id);
