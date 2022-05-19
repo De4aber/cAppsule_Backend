@@ -90,23 +90,27 @@ namespace cAppsule
             //Setting up dependency injection
             //MainDbSeeder
             services.AddScoped<IMainDbSeeder, MainDbSeeder>();
-
+            
             //Security
             services.AddScoped<ISecurityService, SecurityService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthUserService>();
             services.AddScoped<IAuthDbSeeder, AuthDbSeeder>();
-            
             //Users
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserService, UserService>();
+                services.AddScoped<IUserRepository, UserRepository>();
+                services.AddScoped<IUserService, UserService>();
+                
+                //Friendships
+                services.AddScoped<IFriendshipRepository, FriendshipRepository>();
+                services.AddScoped<IFriendshipService, FriendshipService>();
+                
+                //Capsules
+                services.AddScoped<ICapsuleRepository, CapsuleRepository>();
+                services.AddScoped<ICapsuleService, CapsuleService>();
 
-            //Friendships
-            services.AddScoped<IFriendshipRepository, FriendshipRepository>();
-            services.AddScoped<IFriendshipService, FriendshipService>();
 
 
-            //Setting up DB info
+                //Setting up DB info
             services.AddDbContext<MainDbContext>(options => { options.UseSqlite("Data Source=main.db"); });
 
             services.AddDbContext<AuthDbContext>(options => { options.UseSqlite("Data Source=auth_database.db"); });

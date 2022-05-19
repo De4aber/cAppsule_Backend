@@ -11,12 +11,10 @@ namespace de4aber.cAppsule.DataAccess.Repositories
     public class FriendshipRepository : IFriendshipRepository
     {
         private readonly MainDbContext _ctx;
-        private readonly IUserRepository _userRepository;
-        
-        public FriendshipRepository(MainDbContext ctx, IUserRepository userRepository)
+
+        public FriendshipRepository(MainDbContext ctx)
         {
             _ctx = ctx ?? throw new InvalidDataException("FriendshipRepository need a DBcontext");
-            _userRepository = userRepository ?? throw new InvalidDataException("FriendshipRepository need a UserRepository");
         }
 
         public List<Friendship> FindAll()
