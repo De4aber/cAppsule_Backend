@@ -648,3 +648,10 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # End of https://www.toptal.com/developers/gitignore/api/rider,csharp,node,angular
+*.db-shm
+*.db-shm
+de4aber.cAppsule.WebAPI/auth_database.db-wal
+de4aber.cAppsule.WebAPI/main.db-wal
+de4aber.cAppsule.WebAPI/main.db-shm
+de4aber.cAppsule.WebAPI/auth_database.db-shm
+*.db-wal
