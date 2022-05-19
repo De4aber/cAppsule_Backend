@@ -10,19 +10,38 @@ namespace cAppsule.Controllers
     [Route("[controller]")]
     public class AuthController
     {
-        private readonly IAuthService _authService;
+        private readonly ISecurityService _securityService;
         
-        public AuthController(IAuthService authService)
+        public AuthController(ISecurityService securityService)
         {
-            _authService = authService ??
-                          throw new InvalidDataException("AppointmentController needs IAppointmentService");
+            _securityService = securityService ??
+                               throw new InvalidDataException("AppointmentController needs IAppointmentService");
 
         }
 
-        [HttpPost]
-        public ActionResult<Login> login([FromBody] AuthUser user)
+        [HttpPost(nameof(Login))]
+        public ActionResult<TokenDto> Login(LoginDto dto)
         {
-            return new Login() { };
+            var token = _securityService.GenerateJwtToken(dto.Username, dto.Password);
+            return new TokenDto()
+            {
+                Jwt = token.Jwt,
+                Message = token.Message,
+                UserId = token.UserId
+            };
         }
+    }
+    
+    public class TokenDto
+    {
+        public string Jwt { get; set; }
+        public string Message { get; set; }
+
+        public int UserId { get; set; }
+    }
+    public class LoginDto
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

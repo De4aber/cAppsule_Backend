@@ -38,7 +38,7 @@ namespace de4aber.cAppsule.Security.Services
                 {
                     Jwt = new JwtSecurityTokenHandler().WriteToken(token),
                     Message = "Ok",
-                    EmployeeId = user.EmployeeId,
+                    UserId = user.EmployeeId,
                 };
             }
 
