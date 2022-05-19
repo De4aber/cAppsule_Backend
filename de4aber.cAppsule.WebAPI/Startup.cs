@@ -1,5 +1,3 @@
-using System.Text;
-using cAppsule;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.DataAccess;
 using de4aber.cAppsule.DataAccess.Repositories;
@@ -17,10 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Microsoft.OpenApi.Models;
-
-
-namespace voresgruppe.ThirdSemesterExamBackend.WebApi
+namespace cAppsule
 {
     public class Startup
     {
@@ -56,7 +51,7 @@ namespace voresgruppe.ThirdSemesterExamBackend.WebApi
                 
                 //Security
                 services.AddScoped<IAuthRepository, AuthRepository>();
-                services.AddScoped<IAuthService, AuthService>();
+                services.AddScoped<IAuthService, AuthUserService>();
                 services.AddScoped<IAuthDbSeeder, AuthDbSeeder>();
 
             

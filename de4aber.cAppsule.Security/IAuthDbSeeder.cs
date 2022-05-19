@@ -1,7 +1,8 @@
-namespace de4aber.cAppsule.Security;
-
-public interface IAuthDbSeeder
+namespace de4aber.cAppsule.Security
 {
-    void SeedDevelopment();
-    void SeedProduction();
+    public interface IAuthDbSeeder
+    {
+        void SeedDevelopment();
+        void SeedProduction();
+    }
 }
