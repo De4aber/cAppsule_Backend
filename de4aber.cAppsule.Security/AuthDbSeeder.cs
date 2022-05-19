@@ -20,8 +20,6 @@ namespace de4aber.cAppsule.Security
         {
             _ctx.Database.EnsureDeleted();
             _ctx.Database.EnsureCreated();
-            
-            Console.Write("fuck nu af");
 
             var salt = "123#!";
             _ctx.AuthUsers.Add(new AuthUserEntity()

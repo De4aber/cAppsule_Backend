@@ -11,7 +11,6 @@ namespace de4aber.cAppsule.Core.IServices
         public List<UserDTO> GetUserDtos();
         public User GetById(int id);
         UserDTO Create(CreateUserDTO user);
-        Login Login(User user);
         public bool DeleteById(int id);
         public User UpdateUser(int id, User user);
         public List<UserLimitedInfoDTO> SearchByUsername(string search);
