@@ -12,7 +12,7 @@ namespace cAppsule.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AuthController
+    public class AuthController: ControllerBase
     {
         private readonly ISecurityService _securityService;
         private readonly IAuthService _authService;
