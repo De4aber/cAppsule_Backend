@@ -45,7 +45,7 @@ namespace cAppsule.Controllers
         public ActionResult<UserDTO> CreateUser(CreateUserDTO user)
         {
             var u = _userService.Create(user);
-            _authService.Create(u.Id, u.Username, _securityService.HashedPassword(user.Password,Encoding.ASCII.GetBytes("123!#")));
+            _authService.Create(u.Id, u.Username, _securityService.HashedPassword(user.Password,Encoding.ASCII.GetBytes("123#!")));
             return u;
         }
 
