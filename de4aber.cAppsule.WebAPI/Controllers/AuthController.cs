@@ -21,7 +21,9 @@ namespace cAppsule.Controllers
             _securityService = securityService ?? throw new InvalidDataException("AppointmentController needs IAppointmentService");
             _authService = authService ?? throw new InvalidDataException("AppointmentController needs IAppointmentService");;
         }
-
+        
+        //TODO slet inden aflevering
+        /*
         [HttpGet]
         public ActionResult<List<AuthUserEntity>> GetAll()
         {
@@ -34,6 +36,7 @@ namespace cAppsule.Controllers
             string hashedPasswordFromPlain = _securityService.HashedPassword(str, Encoding.ASCII.GetBytes("123!#"));
             return hashedPasswordFromPlain;
         }
+        */
         
         [HttpPost(nameof(Login))]
         public ActionResult<TokenDto> Login(LoginDto dto)

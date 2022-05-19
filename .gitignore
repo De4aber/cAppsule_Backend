@@ -655,3 +655,9 @@ de4aber.cAppsule.WebAPI/main.db-wal
 de4aber.cAppsule.WebAPI/main.db-shm
 de4aber.cAppsule.WebAPI/auth_database.db-shm
 *.db-wal
+*.db-wal
+de4aber.cAppsule.WebAPI/main.db-shm
+de4aber.cAppsule.WebAPI/auth_database.db-wal
+de4aber.cAppsule.WebAPI/auth_database.db-shm
+de4aber.cAppsule.WebAPI/main.db-shm
+de4aber.cAppsule.WebAPI/main.db-wal
