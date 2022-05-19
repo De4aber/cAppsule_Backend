@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.Security.Entities;
 using de4aber.cAppsule.Security.IServices;
@@ -25,6 +26,13 @@ namespace cAppsule.Controllers
         public ActionResult<List<AuthUserEntity>> GetAll()
         {
             return _authService.GetAll();
+        }
+
+        [HttpPost(nameof(test))]
+        public ActionResult<string> test(string str)
+        {
+            string hashedPasswordFromPlain = _securityService.HashedPassword(str, Encoding.ASCII.GetBytes("123!#"));
+            return hashedPasswordFromPlain;
         }
         
         [HttpPost(nameof(Login))]

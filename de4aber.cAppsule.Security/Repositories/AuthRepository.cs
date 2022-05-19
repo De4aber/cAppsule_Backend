@@ -52,10 +52,10 @@ namespace de4aber.cAppsule.Security.Repositories
         {
             AuthUserEntity au = new AuthUserEntity()
             {
-                Id = id,
                 Username = username,
                 HashedPassword = password,
-                Salt = "123#!"
+                Salt = "123#!",
+                EmployeeId = id
             };
             _ctx.AuthUsers.Add(au);
             _ctx.SaveChanges();
