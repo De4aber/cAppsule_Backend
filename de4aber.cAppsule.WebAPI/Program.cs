@@ -1,3 +1,4 @@
+using cAppsule;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.DataAccess;
 using de4aber.cAppsule.DataAccess.Repositories;
@@ -7,7 +8,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using voresgruppe.ThirdSemesterExamBackend.WebApi;
 
 public class Program
 {
