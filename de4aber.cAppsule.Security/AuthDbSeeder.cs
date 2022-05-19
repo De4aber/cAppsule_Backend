@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using de4aber.cAppsule.Security.Entities;
 using de4aber.cAppsule.Security.IServices;
@@ -19,6 +20,8 @@ namespace de4aber.cAppsule.Security
         {
             _ctx.Database.EnsureDeleted();
             _ctx.Database.EnsureCreated();
+            
+            Console.Write("fuck nu af");
 
             var salt = "123#!";
             _ctx.AuthUsers.Add(new AuthUserEntity()
