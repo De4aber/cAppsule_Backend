@@ -42,17 +42,20 @@ namespace cAppsule.Controllers
         public ActionResult<TokenDto> Login(LoginDto dto)
         {
             var token = _securityService.GenerateJwtToken(dto.Username, dto.Password);
-            return new TokenDto()
-            {
-                Jwt = token.Jwt,
-                Message = token.Message,
-                UserId = token.UserId
-            };
+            
+            return new TokenDto(token.Jwt, token.Message, token.UserId);
         }
     }
     
     public class TokenDto
     {
+        public TokenDto(string jwt, string message, int userId)
+        {
+            Jwt = jwt;
+            Message = message;
+            UserId = userId;
+        }
+
         public string Jwt { get; set; }
         public string Message { get; set; }
 

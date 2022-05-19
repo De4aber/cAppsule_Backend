@@ -44,7 +44,9 @@ namespace de4aber.cAppsule.Security.Services
 
             return new JwtToken()
             {
-                Message = "Login Denied"
+                Jwt = "null",
+                Message = "Login Denied",
+                UserId = -1
             };
         }
 
