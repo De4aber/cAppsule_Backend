@@ -138,17 +138,11 @@ namespace cAppsule
                 app.UseSwagger();
 
                 app.UseSwaggerUI();
-                app.UseCors("Dev-cors");
-                
-                mainDbSeeder.SeedDevelopment();
-                authDbSeeder.SeedDevelopment();
             }
-            else
-            {
-                mainDbSeeder.SeedProduction();
-                authDbSeeder.SeedProduction(); 
-            }
-
+            app.UseCors("Dev-cors");
+            
+            mainDbSeeder.SeedDevelopment();
+            authDbSeeder.SeedDevelopment();
 
             app.UseHttpsRedirection();
 
