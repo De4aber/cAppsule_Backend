@@ -120,9 +120,10 @@ namespace cAppsule
                 options.AddPolicy("Dev-cors", policy =>
                 {
                     policy
-                        .WithOrigins("http://localhost:7010")
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
+                    
                 });
             });
         }
