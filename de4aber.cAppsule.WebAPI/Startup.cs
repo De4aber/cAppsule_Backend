@@ -1,4 +1,6 @@
+using System;
 using System.Text;
+using cAppsule.Hubs;
 using de4aber.cAppsule.Core.IServices;
 using de4aber.cAppsule.DataAccess;
 using de4aber.cAppsule.DataAccess.Repositories;
@@ -18,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+
 
 namespace cAppsule
 {
@@ -115,15 +118,19 @@ namespace cAppsule
 
             services.AddDbContext<AuthDbContext>(options => { options.UseSqlite("Data Source=auth_database.db"); });
 
+            services.AddRazorPages();
+            services.AddSignalR();
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("Dev-cors", policy =>
                 {
                     policy
-                        .AllowAnyOrigin()
+                        .WithOrigins("http://localhost:3000/")
                         .AllowAnyHeader()
-                        .AllowAnyMethod();
-                    
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+
                 });
             });
         }
@@ -142,6 +149,18 @@ namespace cAppsule
             }
             app.UseCors("Dev-cors");
             
+            /*
+            
+            var webSocketOptions = new WebSocketOptions
+            {
+                KeepAliveInterval = TimeSpan.FromMinutes(2),
+            };
+            webSocketOptions.AllowedOrigins.Add("http://localhost/");
+
+            app.UseWebSockets(webSocketOptions);
+            */
+            
+            
             mainDbSeeder.SeedDevelopment();
             authDbSeeder.SeedDevelopment();
 
@@ -153,7 +172,13 @@ namespace cAppsule
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers(); 
+                endpoints.MapRazorPages();
+                endpoints.MapHub<FriendRequestHub>("/friendRequestHub");
+            });
         }
     }
 }
