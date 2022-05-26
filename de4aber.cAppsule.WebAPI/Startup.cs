@@ -120,9 +120,10 @@ namespace cAppsule
                 options.AddPolicy("Dev-cors", policy =>
                 {
                     policy
-                        .WithOrigins("http://localhost:7010")
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
+                    
                 });
             });
         }
@@ -138,17 +139,11 @@ namespace cAppsule
                 app.UseSwagger();
 
                 app.UseSwaggerUI();
-                app.UseCors("Dev-cors");
-                
-                mainDbSeeder.SeedDevelopment();
-                authDbSeeder.SeedDevelopment();
             }
-            else
-            {
-                mainDbSeeder.SeedProduction();
-                authDbSeeder.SeedProduction(); 
-            }
-
+            app.UseCors("Dev-cors");
+            
+            mainDbSeeder.SeedDevelopment();
+            authDbSeeder.SeedDevelopment();
 
             app.UseHttpsRedirection();
 
