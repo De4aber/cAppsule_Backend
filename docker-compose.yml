@@ -4,6 +4,6 @@ services:
   api:
     build:
       context: ""
-    container_name: "backend-container"
+    container_name: "${CONT_NAME}"
     ports:
-      - "8091:80"
+      - "${PORT}:80"
