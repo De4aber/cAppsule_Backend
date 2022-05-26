@@ -21,10 +21,7 @@ pipeline {
 
         stage('Test backend'){
             steps {
-                dir("de4aber.cAppsule.Domain-test"){
-                    sh "dotnet add package coverlet.collector"
-                    sh "dotnet test --collect:'XPlat Code Coverage'"
-                }
+                sh "dotnet test"
             }
         }
 
