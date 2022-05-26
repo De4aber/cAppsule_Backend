@@ -4,6 +4,7 @@ services:
   api:
     build:
       context: ""
-    container_name: "backend-container"
+    image: "localhost:7002/cappsule-backend-test_api:${IMAGE_TAG}"
+    container_name: "${CONT_NAME}"
     ports:
-      - "8091:80"
+      - "${PORT}:80"
