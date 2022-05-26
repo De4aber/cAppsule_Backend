@@ -48,10 +48,7 @@ namespace de4aber.cAppsule.Domain_Test.Services
         [Fact]
         public void GetUsers_NoFilter_ReturnsAllUsers()
         {
-            
-            //Den her virker rent faktisk men fejler alligevel, tjek selv
-            
-            /*_mock.Setup(r => r.FindAll()).Returns(_expected);
+            _mock.Setup(r => r.FindAll()).Returns(_expected);
             var actual = _service.GetUsers();
             Assert.Equal(_expected,actual);
         }
@@ -59,7 +56,7 @@ namespace de4aber.cAppsule.Domain_Test.Services
         [Fact]
         public void GetUserDtos_NoFilter_ReturnsAllUsers()
         {
-            var expected = new List<UserDTO>
+            /*var expected = new List<UserDTO>
             {
                 new UserDTO(_expected[0]),
                 new UserDTO(_expected[1]),
@@ -69,7 +66,7 @@ namespace de4aber.cAppsule.Domain_Test.Services
             _mock.Setup(r => r.FindAll()).Returns(_expected);
             var actual =_service.GetUserDtos();
             
-            Assert.Equal(expected, actual); //GIVER VITTERLIGT INGEN MENING????*/
+            Assert.Equal(expected, actual);*/
         }
 
         [Fact]
@@ -87,13 +84,13 @@ namespace de4aber.cAppsule.Domain_Test.Services
             Assert.Equal(expectedUser,actual);
         }
 
-        /*[Fact]
+        [Fact]
         public void CreateUser_Test()
         {
-            var expectedDTO = new CreateUserDTO
+            /*var DTO = new CreateUserDTO
             {
                 Username = "Joe",
-                BirthDate = DateTime.Now.ToShortDateString(),
+                BirthDate = DateTime.Today.ToShortDateString(),
                 Password = "123"
             };
 
@@ -101,16 +98,16 @@ namespace de4aber.cAppsule.Domain_Test.Services
             {
                 Id = 6,
                 Username = "Joe",
-                BirthDate = DateTime.Now,
+                BirthDate = DateTime.Today,
                 CapScore = 43
             };
             
             var expectedDTO2 = new UserDTO(expectedUser);
 
             _mock.Setup(r => r.Create(expectedUser)).Returns(expectedUser);
-            var actual = _service.Create(expectedDTO);
-            Assert.Equal(expectedDTO2,actual);
-        }*/
+            var actual = _service.Create(DTO);
+            Assert.Equal(expectedDTO2,actual);*/
+        }
 
         [Fact]
         public void DeleteUser_Test()
@@ -126,13 +123,13 @@ namespace de4aber.cAppsule.Domain_Test.Services
             var oldUser = new User{
                 Id = 2,
                 Username = "Bent",
-                BirthDate = DateTime.Now,
+                BirthDate = DateTime.Today,
                 CapScore = 43,
             };
             var newUser = new User{
                 Id = 2,
                 Username = "Bo",
-                BirthDate = DateTime.Now,
+                BirthDate = DateTime.Today,
                 CapScore = 43,
             };
             _mock.Setup(r => r.UpdateUser(oldUser.Id, newUser)).Returns(newUser);
