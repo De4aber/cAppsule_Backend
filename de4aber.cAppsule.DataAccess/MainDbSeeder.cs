@@ -77,6 +77,16 @@ namespace de4aber.cAppsule.DataAccess
                 Photo = null,
                 Time = "2022-05-16T21:54:26"
             });
+            _ctx.Cappsules.Add(new CapsuleEntity()
+            {
+                SenderId = 3,
+                ReceiverId = 1,
+                Latitude = 55.46910408813035, 
+                Longitude = 8.458843244655215,
+                Message = "Esbjerg Banegård",
+                Photo = null,
+                Time = "2022-05-16T21:54:26"
+            });
         }
     }
 }
