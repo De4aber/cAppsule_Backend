@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Deploy to prod') {
             steps {
+                sh "docker compose --env-file ./config/Prod.env pull"
                 sh "docker compose --env-file ./config/Prod.env up -d --build"
             }
         }
