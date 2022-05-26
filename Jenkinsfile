@@ -30,10 +30,12 @@ pipeline {
 
         stage("Reset containers"){
             steps{
-                try {
-                sh "docker compose --env-file ./config/Test.env down"
+                script { 
+                    try {
+                        sh "docker compose --env-file ./config/Test.env down"
+                    }
+                    finally {}
                 }
-                finally {}
             }
         }
 
