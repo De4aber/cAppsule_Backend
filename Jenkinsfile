@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy containers'){
             steps {
-                sh "docker compose --env-file ./config/Test.env up -d --build"
+                sh "docker compose --env-file ./config/Test.env up -d"
             }
         }
 
