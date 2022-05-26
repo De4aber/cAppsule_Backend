@@ -15,7 +15,6 @@ namespace de4aber.cAppsule.Core.DTOs
             Username = user.Username;
             BirthDate = user.BirthDate.ToShortDateString();
             CapScore = user.CapScore;
-
         }
     }
 }

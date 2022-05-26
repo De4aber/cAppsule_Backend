@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de4aber.cAppsule.Security", "de4aber.cAppsule.Security\de4aber.cAppsule.Security.csproj", "{FE3239E9-EF29-47BD-88B6-BFE03D957AC2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core-Test", "Core-Test", "{E72C5797-3706-4003-86E4-9631CC849AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de4aber.cAppsule.Domain-Test", "de4aber.cAppsule.Domain-Test\de4aber.cAppsule.Domain-Test.csproj", "{59C8D57B-4808-4818-AFD1-7B344C011825}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,10 @@ Global
 		{FE3239E9-EF29-47BD-88B6-BFE03D957AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE3239E9-EF29-47BD-88B6-BFE03D957AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE3239E9-EF29-47BD-88B6-BFE03D957AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C8D57B-4808-4818-AFD1-7B344C011825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C8D57B-4808-4818-AFD1-7B344C011825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C8D57B-4808-4818-AFD1-7B344C011825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C8D57B-4808-4818-AFD1-7B344C011825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ED4C9D96-200D-4E85-AEFF-2CF91B23C929} = {C8C2E498-7199-4AC1-87A3-A1C31E176BA1}
@@ -49,5 +57,6 @@ Global
 		{AC4C904E-EFFF-4C4F-9A90-6FCF329F8B15} = {5A7CA1A5-CFA8-488F-AB53-18D1047CC71F}
 		{B49485C0-E7C2-4572-BEF6-B89E3D87E29A} = {BFAFD867-33FA-4510-82BA-2F2F9E41BA40}
 		{FE3239E9-EF29-47BD-88B6-BFE03D957AC2} = {C8C2E498-7199-4AC1-87A3-A1C31E176BA1}
+		{59C8D57B-4808-4818-AFD1-7B344C011825} = {E72C5797-3706-4003-86E4-9631CC849AD2}
 	EndGlobalSection
 EndGlobal
