@@ -181,7 +181,7 @@ namespace cAppsule
             {
                 endpoints.MapControllers(); 
                 endpoints.MapRazorPages();
-                endpoints.MapHub<FriendRequestHub>("/friendRequestHub");
+                endpoints.MapHub<CapsuleHub>("/friendRequestHub");
             });
         }
     }
