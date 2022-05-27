@@ -149,8 +149,7 @@ namespace cAppsule
             }
             app.UseCors(builder =>
                 {
-                    builder.WithOrigins("http://localhost:3000")
-                        .WithOrigins("http://185.51.76.204:8092/")
+                    builder.WithOrigins("http://185.51.76.204:8092/")
                         .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                 });
             
